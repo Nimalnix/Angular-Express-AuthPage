@@ -1,0 +1,42 @@
+<!-- The corresponding model is automatically created by Angular...
+userData becomes the object that acts as a model. userData is automatically
+created by angular. It will have fields like firstName ,lname ,join date, salary-->
+
+<!-- <h2>Enter users's Data</h2>
+<form #userData="ngForm" (ngSubmit)='addUser(userData)'>
+  UserId <input type="text" name="uid" ngModel /><br>
+  Password <input type="text" name="pwd" ngModel /><br>
+  emailid <input type="mail" name="mail" ngModel /><br>
+  <input type="submit" value="Add user"/>
+  <input type="button" value="Get user" (click)="getUsers()"/>
+  <button (click)="updateUser(userData.value)">Update User</button>
+</form>
+
+<table border="4">
+  <thead>
+    <tr>
+      <th>User ID</th>
+      <th>Password</th>
+      <th>mail</th>
+      <th colspan="2">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of userList">
+      <td>{{ user.userid }}</td>
+      <td>{{ user.password}}</td>
+      <td>{{ user.emailid }}</td>
+      <td><button (click)="updateUser(user)">Edit</button></td>
+      <td><button (click)="deleteUser(user.userid)">Delete</button></td>
+    </tr>
+  </tbody>
+</table> -->
+<router-outlet></router-outlet>
+<nav>
+  <!-- <a routerLink="/home"><img src="/assets/images/Home.png" width="40px" height="40px"/></a>&nbsp;&nbsp;&nbsp;&nbsp; -->
+  <a routerLink="/aboutus"><img src="/assets/images/aboutUs.png" width="40px"
+      height="40px" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+  <a routerLink="/contactus"><img src="/assets/images/contactUs.jpg" width="40px" height="40px" /></a>
+</nav>
+<br><br>
+<b>Home component works fine</b><BR>

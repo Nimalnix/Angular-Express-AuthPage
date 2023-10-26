@@ -1,0 +1,51 @@
+<router-outlet></router-outlet>
+<br><br>
+<h3>Enter USER'S Data</h3><BR>
+
+<form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
+  First Name: <input type="text" name="firstname" ngModel required><br><br>
+  Last Name: <input type="text" name="lastname" ngModel required><br><br>
+  EmailId:<input type="email" name="email" [(ngModel)]="email" required><br><br>
+  Phone Number:<input type="text" name="phonenumber" ngModel required><br><br>
+  Zip Code<input type="text" name="zipcode" ngModel required><br><br>
+  <button type="submit">Add User</button>&nbsp;&nbsp;
+  <input type="button" value="GetUser" (click)="getUsers()" />&nbsp;&nbsp;
+  <button type="button" (click)="updateUser(userForm)">Update</button>&nbsp;&nbsp;
+  <button type="button" (click)="deleteUser(userForm)">Delete</button> &nbsp;&nbsp;<br><br>
+  <!-- <input type="button" value="GetUserById" (click)="getUser(userForm)"/> -->
+</form>
+<table>
+  <thead>
+    <tr>
+      <th>FirstName</th>
+      <th>LastName</th>
+      <th>EmailId</th>
+      <th>Phone Number</th>
+      <th>Zip Code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of userList">
+      <td>{{user.firstname}}</td>
+      <td>{{user.lastname}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.phonenumber}}</td>
+      <td>{{user.zipcode}}</td>
+    </tr>
+  </tbody>
+</table>
+<hr>
+
+<div>
+  <h3>Set up Password </h3>
+  <form #passwordForm="ngForm" (ngSubmit)="addUserCredentials(passwordForm)">
+    <label for="email">Email:</label>
+    <input type="text" id="email" [(ngModel)]="email" value="{{email}}" name="email" required><br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" [(ngModel)]="password" name="password" required><br><br>
+
+    <button type="submit">Sign In</button>
+  </form>
+</div>
+
