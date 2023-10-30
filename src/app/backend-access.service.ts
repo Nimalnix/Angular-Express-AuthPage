@@ -12,6 +12,7 @@ export class BackendAccessService {
   getUserList: any = [];
 
   expresponse: string = "";
+ 
 
   constructor(private httpClient: HttpClient) { }
 
@@ -25,8 +26,9 @@ export class BackendAccessService {
   }
 
   addUser(userForm: any) {
-    this.httpClient.post('http://localhost:5051/insertuser', userForm.value).subscribe(data => {
+    this.httpClient.post('http://localhost:5051/insertuser',userForm.value).subscribe(data => {
       this.data = data;
+      console.log(this.data);
     })
     return (this.data);
   }
@@ -50,24 +52,7 @@ export class BackendAccessService {
   //     this.email=this.getUserList[0].emailId;
   //   })
   // }
-  getallcontact() {
-    this.httpClient.get('http://localhost:5051/getallcontact').subscribe((response) => {
-      this.contactList = response;
-      console.log(this.contactList);
 
-    });
-    return this.contactList;
-  }
-  addcontact(cdata: any): any {
-
-    // console.log(udata);
-    //console.log(udata.value);
-    //this.userList.push(udata.value);
-    this.httpClient.post('http://localhost:5051/addcontact', cdata.value).subscribe((response) => {
-      this.expresponse = response.toString();
-      return this.expresponse;
-    });
-  }
   getUser(signInForm: any):any {
     this.httpClient.get(`http://localhost:5051/getuserbyemail?email=${signInForm.value.email}`).subscribe(data => {
       this.signInList = data;
@@ -80,5 +65,39 @@ export class BackendAccessService {
       this.data = data;
     })
     return (this.data);
+  }
+
+  
+  addContact(cdata:any){
+    console.log(cdata.value);
+    this.httpClient.post('http://localhost:5051/addcontact',cdata.value).subscribe(data => {
+      this.data = data;
+      console.log(this.data);
+    })
+    return (this.data);
+  }
+
+  getAllContact(){ 
+    this.httpClient.get('http://localhost:5051/allcontact').subscribe(data => {
+      this.contactList = data;
+    })
+    console.log(this.contactList);
+    return this.contactList;
+  }
+
+  updateContact(cdata:any){
+    this.httpClient.post('http://localhost:5051/updatecontact',cdata.value).subscribe((response: any)=>
+    {
+      this.contactList=response;
+      console.log(this.contactList);
+    });
+  }
+  
+  deleteContact(cdata:any){
+    this.httpClient.delete('http://localhost:5051/deletecontact',cdata.value).subscribe((response: any)=>
+    {
+      this.contactList=response;
+      console.log(this.contactList);
+    });
   }
 }

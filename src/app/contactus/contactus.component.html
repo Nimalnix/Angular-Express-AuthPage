@@ -1,46 +1,35 @@
-<nav>
-  <a routerLink="/home"><img src="/assets/images/Home.png" width="40px" height="40px"/></a>&nbsp;&nbsp;&nbsp;&nbsp;
-  <a routerLink="/aboutus"><img src="/assets/images/aboutUs.png" width="40px"
-      height="40px" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
-  <!-- <a routerLink="/contactus"><img src="/assets/images/contactUs.jpg" width="40px" height="40px" /></a> -->
-</nav>
+<form #contactData="ngForm" (ngSubmit)="addContact(contactData)">
+  FirstName <input type="text" name="FirstName" ngModel /><br>
+  LastName <input type="text" name="LastName" ngModel /><br>
+  Email ID <input type="email" name="EmailID" ngModel /><br>
+  Phone Number <input type="number" name="PhoneNumber" ngModel /><br>
+  Address <input type="text" name="Address" ngModel /><br>
 
-<b>We can be contacted on .........</b>
-<b>Our Address</b>
-<div>
-    GAVS<br>
-    Sholingallur<br>
-    Chennai<br>
-    INDIA
-</div>
- 
-<form #ContactData="ngForm" (ngSubmit)="addcontact(ContactData)">
- 
-    FirstName<input type="text"  name="fname" ngModel ><br>
-    LastName<input type="text" name="lname" ngModel><br>
-    EmailID<input type="email" name="email" ngModel><br>
-    PhoneNumber<input type="text" name="phonenumber" ngModel><br>
-   
-    <input type="submit" value="Add contact">
-    <input type="button" value="Get contact" (click)="getallcontact()"/>
-   
+  <input type="submit" value="Add contact" />&nbsp; &nbsp;
+  <input type="button" value="Get User" (click)="getAllContact()"/>&nbsp; &nbsp;
+  <input type="button" value="update User" (click)="updateContact( contactData)"/>&nbsp; &nbsp;
+  <input type="button" value="delete User" (click)="deleteContact(contactData)"/>
 </form>
-<br>
-<p>{{this.expresponse.substring(3,this.expresponse.length-4)}}</p>
-<table border>
+<table  border="4">
   <thead>
     <tr>
       <th>FirstName</th>
       <th>LastName</th>
-      <th>EmailID</th>  
-      <th>PhoneNumber</th>  
-    </tr>
-    <tr *ngFor="let user of contactList">
-     <td>{{user.firstname}}</td>
-     <td>{{user.lastname}}</td>
-      <td>{{user.emailid}}</td>
-      <td>{{user.phonenumber}}</td>
-     
+      <th>EmailID</th>
+      <th>PhoneNumber</th>
+      <th>Address</th>
+ 
     </tr>
   </thead>
+  <tbody>
+    <tr *ngFor="let user of contactList">
+      <td>{{ user.FirstName}}</td>
+      <td>{{ user.LastName }}</td>
+      <td>{{ user.EmailID }}</td>
+      <td>{{ user.PhoneNumber }}</td>
+      <td>{{ user.Address }}</td>
+
+    
+    </tr>
+  </tbody>
 </table>
